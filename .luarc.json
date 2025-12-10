@@ -4,6 +4,6 @@
     "library": ["../Darktide-Mod-Framework/dmf/"]
   },
   "diagnostics": {
-    "globals": ["dmf"]
+    "globals": ["dmf", "CLASS"]
   }
 }
