@@ -1,0 +1,9 @@
+{
+  "workspace.maxPreload": 10000,
+  "workspace": {
+    "library": ["../Darktide-Mod-Framework/dmf/"]
+  },
+  "diagnostics": {
+    "globals": ["dmf"]
+  }
+}
