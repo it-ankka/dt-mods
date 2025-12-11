@@ -10,6 +10,7 @@ ShowPingElement = class("ShowPingElement", "HudElementBase")
 function ShowPingElement:init(parent, draw_layer, start_scale)
   ShowPingElement.super.init(self, parent, draw_layer, start_scale, ShowPingElementDefinitions)
   self._ping_cache = 0
+  mod.settings_updated = true
 end
 
 ---@param ping integer
