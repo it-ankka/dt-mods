@@ -1,13 +1,13 @@
 ---@class DMFMod
-local mod              = get_mod("show-my-ping")
-local DESCRIPTION      = "ping [average] (Show current ping)"
+local mod               = get_mod("show_my_ping")
+local DESCRIPTION       = "ping [average] (Show current ping)"
 
-local last_ping        = 0
-local measures         = {}
+local last_ping         = 0
+local measures          = {}
 
-local hud_ping_element = {
-  class_name = "HudPingElement",
-  filename = "show-my-ping/scripts/hud_ping_element",
+local show_ping_element = {
+  class_name = "ShowPingElement",
+  filename = "show_my_ping/scripts/element/show_ping_element",
 }
 
 ---@param num number
@@ -50,12 +50,15 @@ mod:command("ping", DESCRIPTION, function(avg)
   mod:echo("AVERAGE PING %d", mod.get_average_ping())
 end)
 
+mod.on_setting_changed = function(setting_id)
+  mod.settings_updated = true
+end
 
 mod.on_all_mods_loaded = function()
   ---@diagnostic disable-next-line: missing-fields
   if not mod:register_hud_element({
-        class_name = hud_ping_element.class_name,
-        filename = hud_ping_element.filename,
+        class_name = show_ping_element.class_name,
+        filename = show_ping_element.filename,
         use_hud_scale = true,
         visibility_groups = {
           "tactical_overlay",

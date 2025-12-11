@@ -1,14 +1,10 @@
 local UIWorkspaceSettings = require("scripts/settings/ui/ui_workspace_settings")
 local UIWidget = require("scripts/managers/ui/ui_widget")
 
-local mod = get_mod("show-my-ping")
 local SCENEGRAPH_ID = "show_ping"
 
----@class HudPingElement: HudElementBase
-HudPingElement = class("HudPingElement", "HudElementBase")
-
-
-local Definitions = {
+---@class ShowPingElementDefinitions
+local ShowPingElementDefinitions = {
   scenegraph_definition = {
     screen = UIWorkspaceSettings.screen,
     [SCENEGRAPH_ID] = {
@@ -38,21 +34,7 @@ local Definitions = {
         }
       }
     }, SCENEGRAPH_ID)
-  }
+  },
+  scenegraph_id = SCENEGRAPH_ID
 }
-
-function HudPingElement:init(parent, draw_layer, start_scale)
-  HudPingElement.super.init(self, parent, draw_layer, start_scale, Definitions)
-  self._ping_cache = 0
-end
-
-function HudPingElement:update(dt, ui_renderer, render_settings, input_service)
-  local ping = mod:get_ping()
-  if ping ~= self._ping_cache then
-    self._ping_cache = ping
-    local ping_widget = self._widgets_by_name.ping_widget
-    ping_widget.content.ping_text = ping
-  end
-end
-
-return HudPingElement
+return ShowPingElementDefinitions
