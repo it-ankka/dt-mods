@@ -1,8 +1,10 @@
 {
-  "workspace.maxPreload": 10000,
-  "workspace": {
-    "library": ["../Darktide-Mod-Framework/dmf/"]
-  },
+  "workspace.maxPreload": 50000,
+  "workspace.preloadFileSize": 5000,
+  "workspace.library": [
+    "../Darktide-Source-Code/scripts",
+    "../Darktide-Mod-Framework/dmf/scripts/mods/dmf/modules"
+  ],
   "diagnostics": {
     "globals": ["dmf", "CLASS"]
   }
